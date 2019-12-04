@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css?family=Merriweather:400,700,900&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-image: url(assets/topography/topography.png);
+}
+
+li, a {
+    font-family: 'Courier New', Courier, serif;
+    font-weight: lighter;
+    font-size: 18px;
+    color: #ff0099;
+    text-transform: capitalize;
+}
+
+header {
+    display: flex;
+    justify-content: flex-end;
+    align-content: center;
+    padding: 10px 10% 0px;
+    background-color: #333333;
+    position: sticky;
+    top: 0;
+}
+
+.img {
+    width: 40px;
+    height: 40px;
+    margin-right: auto;
+}
+.nav_bar {
+    list-style: none;
+}
+
+.nav_bar li {
+    display: inline-block;
+    padding: 10px 20px 16px; 
+}
+
+li a {
+    text-transform: uppercase;
+    transition: all 0.3s ease 0s;
+}
+
+li a:hover {
+    color: rgb(255,150,250)
+}
+
+.intorduction {
+    padding: 0px 10%;
+    margin-top: 100px;
+}
+
+h1, h2, h3{
+    font-family: 'Merriweather', serif;
+}
+
+h1 {
+    font-weight: 900;
+    font-size: 50px;
+    padding-bottom: 0.6em;
+}
+
+#subtitle {
+    color:#ff0099;
+    font-size: 25px;
+    font-weight: 500;
+    padding-bottom: 0.6em;
+}
+
+p {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 900;
+    line-height: 1.5em;
+}
+
+#dash {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 10px;
+    text-align: center;
+    letter-spacing: 0.5em;
+    margin-top: 6em;
+    margin-bottom: 6em;
+    font-weight: bold;
+}
+
+.definitions {
+    padding: 0px 10%;
+}
+
+.definitions h2 {
+    text-align: center;
+    font-size: 30px;
+    padding-bottom: 2em;
+}
+
+.definitions h3 {
+    font-size: 25px;
+    font-weight: 700;
+    padding-bottom: 0.5em;
+}
+.definitions p {
+    font-size: 14px;
+    padding-bottom: 1.3em;
+}
