@@ -1,4 +1,4 @@
-# this is the readme file for my repo system
+# this is the readme file for my repos
 
 - [Website repo](https://github.com/StahlAttila/StahlAttila.github.io)
 - [Git lesson repo](https://github.com/StahlAttila/git-lesson-repository)
