@@ -26,7 +26,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
-  <component name="RunManager" selected="Application.AnimalsAndLegs">
+  <component name="RunManager" selected="Application.AverageOfInput">
     <configuration name="AnimalsAndLegs" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="AnimalsAndLegs" />
       <module name="day-4" />
@@ -34,8 +34,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Cuboid" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Cuboid" />
+    <configuration name="AverageOfInput" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="AverageOfInput" />
       <module name="day-4" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -64,11 +64,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.AverageOfInput" />
         <item itemvalue="Application.AnimalsAndLegs" />
         <item itemvalue="Application.MileToKmConverter" />
         <item itemvalue="Application.HelloUser" />
         <item itemvalue="Application.SecondsInADay" />
-        <item itemvalue="Application.Cuboid" />
       </list>
     </recent_temporary>
   </component>
@@ -94,7 +94,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1575543314363</updated>
-      <workItem from="1575543317854" duration="8851000" />
+      <workItem from="1575543317854" duration="9803000" />
     </task>
     <servers />
   </component>
@@ -102,22 +102,22 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1366" height="169" key="GridCell.Tab.0.bottom" timestamp="1575554763323">
+    <state width="1366" height="169" key="GridCell.Tab.0.bottom" timestamp="1575555716329">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1366" height="169" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1575554763323" />
-    <state width="1366" height="169" key="GridCell.Tab.0.center" timestamp="1575554763322">
+    <state width="1366" height="169" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1575555716329" />
+    <state width="1366" height="169" key="GridCell.Tab.0.center" timestamp="1575555716328">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1366" height="169" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1575554763322" />
-    <state width="1366" height="169" key="GridCell.Tab.0.left" timestamp="1575554763320">
+    <state width="1366" height="169" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1575555716328" />
+    <state width="1366" height="169" key="GridCell.Tab.0.left" timestamp="1575555716328">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1366" height="169" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1575554763320" />
-    <state width="1366" height="169" key="GridCell.Tab.0.right" timestamp="1575554763322">
+    <state width="1366" height="169" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1575555716328" />
+    <state width="1366" height="169" key="GridCell.Tab.0.right" timestamp="1575555716328">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1366" height="169" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1575554763322" />
+    <state width="1366" height="169" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1575555716328" />
     <state x="75" y="0" key="SettingsEditor" timestamp="1575552276697">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
