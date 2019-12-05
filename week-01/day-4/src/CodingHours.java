@@ -10,6 +10,6 @@ public class CodingHours {
 
         //Prints out the percentage of the coding hours in the semester
         System.out.println("The percentage of coding hours in the semester: " + ((6.00 * 5) / workHoursWeekly) * 100 + "%");
-        
+
     }
 }
