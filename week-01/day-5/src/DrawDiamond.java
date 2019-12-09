@@ -23,7 +23,7 @@ public class DrawDiamond {
 
             System.out.println();
 
-        //prints out the pyramid upside down IF loop to check if its an even row or not
+        //prints out the pyramid upside down IF loop to check if its an even row or notq
         }
         if (inputRows % 2 == 0){
             for (int l1 = (inputRows/2); l1 > 0 ; l1--) {
