@@ -27,13 +27,15 @@ public class ProductDatabase<sum> {
             String productName = scanner.next();
             System.out.println(costOf(productName, prodDatabase));
         } else if (input == 2) {
-            mostExpensive(prodDatabase);
+            System.out.println(mostExpensive(prodDatabase));
         } else if (input == 3) {
             System.out.println("The average price of the products: " + average(prodDatabase));
         }else if (input == 4){
             System.out.println(below300(prodDatabase)+ " products are below 300.");
         }else if (input == 5){
             cost125(prodDatabase);
+        }else if (input == 6){
+            System.out.println(cheapest(prodDatabase));
         }
     }
 
@@ -47,19 +49,14 @@ public class ProductDatabase<sum> {
         return cost;
     }
 
-    public static void mostExpensive(HashMap<String, Integer> map) {
+    public static Integer mostExpensive(HashMap<String, Integer> map) {
         //not working properly yet
         Integer max = 1;
         for (Map.Entry<String, Integer> entry : map.entrySet()) {
             if (entry.getValue() > max) {
                 max = entry.getValue();
-                for (String value : map.keySet()) {
-                    System.out.println();
-
-                }
-
             }
-        }
+        }return max;
     }
 
     public static Double average(HashMap<String, Integer> map) {
@@ -90,5 +87,13 @@ public class ProductDatabase<sum> {
             }
         }
     }
-
+    public static Integer cheapest (HashMap<String, Integer> map){
+        Integer min = 999999999;
+        for (Map.Entry<String, Integer> entry : map.entrySet()) {
+            if(entry.getValue() < min) {
+                min = entry.getValue();
+            }
+        }
+        return min;
+    }
 }
