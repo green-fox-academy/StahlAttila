@@ -17,10 +17,6 @@ public class Doubled {
             List<String> lines = Files.readAllLines(path);
             StringBuilder sb = new StringBuilder();
 
-            System.out.println(allChar.toString());
-
-
-            list[i][5]
 
 
         } catch (IOException e) {

@@ -8,7 +8,7 @@ import java.util.List;
 
 public class ReversedLines {
     public static void main(String[] args) {
-        Path filePath = Paths.get("src/reversed-order.txt");
+        Path filePath = Paths.get("src/reversed-lines.txt");
         reversedLines(filePath);
     }
     private static void reversedLines(Path path) {
