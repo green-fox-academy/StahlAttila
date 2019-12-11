@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -13,12 +14,16 @@ public class Doubled {
 
     private static void doubled(Path path) throws IOException {
         try {
-            List<String> newLines = new ArrayList<>();
             List<String> lines = Files.readAllLines(path);
-            StringBuilder sb = new StringBuilder();
-
-
-
+            StringBuilder removeDouble = new StringBuilder();
+            String stringLines = lines.toString();
+            char [] chars = stringLines.toCharArray();
+            for (int i = 1; i < stringLines.length()-1; i+=2) {
+                removeDouble.append(chars[i]);
+            }
+            System.out.println(removeDouble.toString());
+            System.out.println("------------------------");
+            System.out.println(removeDouble.toString().replace(",[*]", "\n"));
         } catch (IOException e) {
             e.printStackTrace();
         }
