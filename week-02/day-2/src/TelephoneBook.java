@@ -9,7 +9,7 @@ public class TelephoneBook {
         tBook.put("Hortensia E. Foster", "606-481-6467");
         tBook.put("Amanda D. Newland", "319-243-5613");
         tBook.put("Brooke P. Askew", "307-687-2982");
-        //is in function not working properly, only Hortesia E. is returning true
+        //isIn function not working properly, only Hortesia E. is returning true
         isIn(tBook, "William A. Lathan");
         //to check the entire hashmap
         for(Map.Entry<String, String> entry:tBook.entrySet()){
