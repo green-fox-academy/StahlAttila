@@ -20,4 +20,7 @@ public class PostIt {
     public String getText(){
         return text;
     }
+    public String  toString(){
+        return "Background color: "+ this.getBackgroundColor() + " Textcolor: " + this.getTextColor() + " text: " + this.getText();
+    }
 }
