@@ -25,7 +25,6 @@ public class FleetOfThings {
         fleet.add(eat);
         standUp.complete();
         eat.complete();
-
         System.out.println(fleet);
     }
 }

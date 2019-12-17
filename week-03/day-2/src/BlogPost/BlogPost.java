@@ -46,5 +46,4 @@ public class BlogPost {
         return this.getAuthorName() + "\n"+this.getTitle() + "\n"+ this.getText() + "\n" + this.getPublicationDate();
     }
 
-
 }

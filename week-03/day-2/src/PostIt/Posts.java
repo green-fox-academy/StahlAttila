@@ -8,6 +8,5 @@ public class Posts {
         System.out.println(post1.toString());
         System.out.println(post2.toString());
         System.out.println(post3.toString());
-
     }
 }

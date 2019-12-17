@@ -13,8 +13,7 @@ public class Dominoes {
         for (int i = 0; i <dominoes.size() ; i++) {
             while (dominoes.get(i).getLeftSide() != dominoes.get(i+1).getRightSide()){
 
-        }
-
+            }
         }
 
         System.out.println(dominoes);
