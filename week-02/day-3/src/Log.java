@@ -5,11 +5,15 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Log {
     public static void main(String[] args) {
+        System.out.println("Enter the name of the file:");
+        Scanner scanner = new Scanner(System.in);
+        String fileName = scanner.nextLine();
         try {
-            Path path = Paths.get("src/log.txt");
+            Path path = Paths.get("src/" + fileName + ".txt");
             System.out.println("The uniqe IP addresses: " + uniqueIP(path));
             System.out.println("The GET/POST ratio is: " + getPostRatio(path));
         } catch (NoSuchFileException e) {

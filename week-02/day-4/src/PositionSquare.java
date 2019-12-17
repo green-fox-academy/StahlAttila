@@ -14,7 +14,7 @@ public class PositionSquare {
         // draw 3 squares with that function.
         // avoid code duplication.
         Scanner scanner = new Scanner(System.in);
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 50000; i++) {
             int x = randomGenerator(1000);
             int y = randomGenerator(650);
             positionSquare(x, y, graphics);
