@@ -1,20 +1,26 @@
 package BlogPost;
 
+import java.util.ArrayList;
+
 public class Blog {
-    public static void main(String[] args) {
-        BlogPost blog1 = new BlogPost("John Doe", "Lorem Ipsum", "2000.05.04.");
-        blog1.setText("Lorem ipsum dolor sit amet.");
+    private ArrayList<BlogPost> blogPosts;
 
-        BlogPost blog2 = new BlogPost("Tim Urban", "Wait but why", "2010.10.10.");
-        blog2.setText("A popular long-form, stick-figure-illustrated blog about almost everything.");
+    public Blog(){
+        this.blogPosts = new ArrayList<BlogPost>();
+    }
 
-        BlogPost blog3 = new BlogPost("William Turton", "One Engineer Is Trying to Get IBM to Reckon With Trump0", "2017.03.28.");
-        blog3.setText("Daniel Hanley, a cybersecurity engineer at IBM, doesn’t want to be the center of attention. When I asked to take his picture outside one of IBM’s New York City offices, he told me that he wasn’t really into the whole organizer profile thing.");
-        System.out.println(blog1.toString());
-        System.out.println("---------------");
-        System.out.println(blog2.toString());
-        System.out.println("---------------");
-        System.out.println(blog3.toString());
+    public void add(BlogPost post){
+        this.blogPosts.add(post);
+    }
+    public void delete(Integer index){
+        this.blogPosts.remove(index);
+    }
+    public void update(Integer index, BlogPost post){
+        this.blogPosts.set(index, post);
+    }
 
+    @Override
+    public String toString() {
+        return "Blog posts: \n" + blogPosts;
     }
 }
