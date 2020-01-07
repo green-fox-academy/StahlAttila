@@ -20,7 +20,7 @@ public class Sponsor extends Person {
 
     @Override
     public void getGoal() {
-        System.out.println("Hire brilliant junior software developers.");
+        System.out.println("My goal is: Hire brilliant junior software developers.");
     }
 
     public Sponsor(String name, Integer age, String gender, String company) {
