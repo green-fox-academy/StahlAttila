@@ -1,0 +1,16 @@
+public class Fibo {
+    public static Integer fibo(Integer n) {
+            if(n == null)
+                return null;
+            else if(n == 1)
+                return 1;
+            else if(n == 0)
+                return 0;
+            else if(n < 0){
+                System.out.println("Invalid index.");
+                return null;
+            }
+            else
+                return fibo(n - 1) + fibo(n - 2);
+    }
+}
