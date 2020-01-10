@@ -20,14 +20,24 @@ public class CountLettersTest {
 
     @Test
     public void countLettersTestEquals() {
+        string = "Alma";
+        map.put('a', 2);
+        map.put('l', 1);
+        map.put('m', 1);
+        assertEquals(map, CountLetters.countLetters(string));
+    }
+
+    @Test
+    public void countLettersTestEqualsEmptyMap() {
         string = "";
         assertEquals(map, CountLetters.countLetters(string));
     }
 
     @Test
-    public void countLettersCointansSpecialCharacter() {
-        string = "Aasfsga!T%/";
-        assertFalse(Objects.requireNonNull(CountLetters.countLetters(string)).containsKey('!'));
+    public void countLettersContainsNoneLetters() {
+        string = "Aasfsga!T%/123";
+        assertFalse((CountLetters.countLetters(string)).containsKey('!'));
+        assertFalse((CountLetters.countLetters(string)).containsKey('2'));
     }
 
     @Test
