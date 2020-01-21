@@ -1,0 +1,141 @@
+body{
+    background-color: #dddddd;
+    padding-right: 50px;
+    padding-left: 50px;
+    margin-top: 100px;
+    margin-left: 200px;
+}
+
+form{
+    padding: 50px 25px;
+    background-color: white;
+}
+input{
+    width: 200px;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    padding: 10px;
+    margin: 10px;
+}
+input:active {
+    border-color: green;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    outline-offset: 0;
+    outline: 0;
+}
+input:focus{
+    border-color: green;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    outline-offset: 0;
+    outline: 0;
+}
+header{
+    padding: 10px;
+}
+
+header{
+    font-weight: 300;
+    font-size: 30px;
+    font-family: "Arial", Serif, serif;
+}
+p{
+    font-family: "Arial", Serif, serif;
+    font-size: 25px;
+    horiz-align: center;
+    text-align: center;
+    width: 50px;
+    height: 50px;
+    background-color: #dddddd;
+    color: black;
+    border: 0;
+    border-radius: 40px;
+}
+#top {
+    margin-right: 0;
+    width: 40%;
+    float: left;
+}
+
+ #mid {
+    margin-right: 0;
+    width: 60px;
+    padding-top: 180px;
+    margin-left: 41%;
+}
+
+ #almighty{
+     width: 800px;
+     height: 472px;
+     background-color: white;
+     margin-bottom: auto;
+ }
+
+#sign-button{
+    margin-left: 10px;
+    margin-top: 50px;
+    width: 150px;
+    height: 40px;
+    background-color: #16a085;
+    color: white;
+    box-shadow: 0 0 0;
+    border:0;
+    outline: 0;
+    outline-offset: 0;
+    border-radius: 3px;
+}
+
+#bottom-buttons{
+    float: right;
+    display: inline-block;
+
+}
+
+#fb{
+    width: 250px;
+    height: 50px;
+    color: white;
+    background-color: #32508e;
+    box-shadow: 0 0 0;
+    border:0;
+    outline: 0;
+    outline-offset: 0;
+    border-radius: 3px;
+}
+
+#google{
+    width: 250px;
+    height: 50px;
+    color: white;
+    background-color: #dd4b39;
+    box-shadow: 0 0 0;
+    border:0;
+    outline: 0;
+    outline-offset: 0;
+    border-radius: 3px;
+}
+
+#twitter{
+    width: 250px;
+    height: 50px;
+    color: white;
+    box-shadow: 0 0 0;
+    background-color: #55acee;
+    border:0;
+    outline: 0;
+    outline-offset: 0;
+    border-radius: 3px;
+}
+
+/*#bottom-buttons{
+    width: 250px;
+    height: 50px;
+    color: white;
+    box-shadow: none;
+    border-radius: 3px;
+}*/
+
