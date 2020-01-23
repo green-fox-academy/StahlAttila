@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Food</title>
+</head>
+<body>
+<form th:action="@{/update-account(accountIndex=${accounts.indexOf(account)})}" method="post" th:object="${account}">
+    <label for="name">Name</label>
+        <!--<input type="text" id="owner" name="title" th:value="${account.name}">-->
+    <input type="text" th:field="*{name}">
+
+    <br>
+
+    <label for="balance">Balance</label>
+    <!--    <input type="number" id="amount" name="amount" th:value="${food.amount}">-->
+    <input type="number" th:field="*{balance}">
+
+    <br>
+
+    <button type="submit">Increment</button>
+</form>
+</body>
+</html>
