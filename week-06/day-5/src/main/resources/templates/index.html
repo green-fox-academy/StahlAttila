@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home page</title>
+    <link rel="stylesheet" type="text/css" href="mystlye.css">
+</head>
+<body>
+<div th:replace="fragments/topPart :: topPart"></div>
+    <div id="table">
+        <table>
+            <thead>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Quantity of Stock</th>
+            </thead>
+            <tbody>
+            <tr th:each="item : ${itemList}">
+                <td th:text="${item.name}"></td>
+                <td th:text="${item.description}"></td>
+                <td th:text="${item.price} +' '+ ${item.currency}"></td>
+                <td id="quantity" th:text="${item.quantityOfStock}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>
