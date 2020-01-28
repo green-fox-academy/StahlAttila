@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Home page</title>
-    <link rel="stylesheet" type="text/css" href="mystlye.css">
+    <link rel="stylesheet" type="text/css" href="newstyles.css">
 </head>
 <body>
 <div th:replace="fragments/topPart :: topPart"></div>
@@ -11,6 +11,7 @@
         <table>
             <thead>
             <th>Name</th>
+            <th>Type</th>
             <th>Description</th>
             <th>Price</th>
             <th>Quantity of Stock</th>
@@ -18,6 +19,7 @@
             <tbody>
             <tr th:each="item : ${itemList}">
                 <td th:text="${item.name}"></td>
+                <td th:text="${item.type}"></td>
                 <td th:text="${item.description}"></td>
                 <td th:text="${item.price} +' '+ ${item.currency}"></td>
                 <td id="quantity" th:text="${item.quantityOfStock}"></td>

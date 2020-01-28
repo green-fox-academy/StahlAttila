@@ -1,5 +1,8 @@
 package com.greenfoxacademy.webshop.model;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+
 public class ShopItem {
 
     private String name;
@@ -7,21 +10,50 @@ public class ShopItem {
     private Double price;
     private Integer quantityOfStock;
     private String currency;
+    private Boolean isInEuro;
+    private String type;
+    private static DecimalFormat df2 = new DecimalFormat("#.##");
 
-    public ShopItem(String name, String description, Double price, Integer quantityOfStock) {
+    public ShopItem(String name, String type, String description, Double price, Integer quantityOfStock) {
         this.name = name;
+        this.type = type;
         this.description = description;
         this.price = price;
         this.quantityOfStock = quantityOfStock;
         this.currency = "€";
-    }
-
-
-    public String getCurrency() {
-        return currency;
+        this.isInEuro = true;
     }
 
     public ShopItem() {
+    }
+
+    public Double getPriceInDouble(){
+        return price;
+    }
+
+    public void setToForint(){
+        if(this.isInEuro){
+           this.currency = "Ft";
+           this.isInEuro = false;
+            df2.setRoundingMode(RoundingMode.UP);
+           this.price = price*337;
+        }
+    }
+
+    public void setToEuro(){
+        if(!this.isInEuro){
+            this.currency = "€";
+            this.isInEuro = true;
+            this.price = price/337;
+        }
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public String getCurrency() {
+        return currency;
     }
 
     public String getName() {
@@ -40,8 +72,8 @@ public class ShopItem {
         this.description = description;
     }
 
-    public Double getPrice() {
-        return price;
+    public String getPrice() {
+        return String.format("%.2f", price);
     }
 
     public void setPrice(Double price) {

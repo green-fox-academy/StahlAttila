@@ -1,7 +1,10 @@
 <div th:fragment = "topPart">
     <div id="top">
-        <a id="home" href="/webshop"><h1>This isn't the greatest webshop... this is just a tribute.</h1></a>
-        <ul>
+        <div class="topText">
+            <a href="/webshop"><h1>Da' Webshop</h1></a>
+            <a href="/more-filters"><h1>MORE>>></h1></a>
+        </div>
+        <ul class="links">
             <li><a href="/only-available">ONLY AVAILABLE</a></li>
             <li><a href="/cheapest-first">CHEAPEST FIRST</a></li>
             <li><a href="/contains-nike">CONTAINS NIKE</a></li>
@@ -13,7 +16,7 @@
         <form action="/search-for" method="post">
             <label for="searchBar">Search for...</label>
             <input type="text" id="searchBar" placeholder="what's on your mind" name="searchBar">
-            <button type="submit">Search</button>
+            <button type="submit">Go</button>
         </form>
     </div>
 </div>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home page</title>
+    <link rel="stylesheet" type="text/css" href="newstyles.css">
+</head>
+<body>
+<div id="top">
+    <div class="topText">
+        <a href="/webshop"><h1>Da' Webshop</h1></a>
+        <a href="/more-filters"><h1>MORE>>></h1></a>
+    </div>
+    <ul class="links">
+        <li><a th:href="@{/filter-by-type(type='electronics')}">ELECTRONICS</a></li>
+        <li><a th:href="@{/filter-by-type(type='snack and beverages')}">SNACK AND BEVERAGES</a></li>
+        <li><a th:href="@{/filter-by-type(type='Clothes and Shoes')}">CLOTHS AND SHOES</a></li>
+        <li><a href="/price-in-euro">EURO</a></li>
+        <li><a href="/price-in-forint">FORINT</a></li>
+    </ul>
+</div>
+<div id="filterButtons">
+    <form action="/filter-by-price" method="get">
+        <input class="priceFilter" type="submit" name="filter" value="Above">
+        <input class="priceFilter" type="submit" name="filter" value="Below">
+        <input class="priceFilter" type="submit" name="filter" value="Exactly">
+        <input type="number" id="priceFilter" placeholder="...e.g.: 300" name="priceFilter" th:value="${filterField}">
+    </form>
+</div>
+<div id="table">
+    <table>
+        <thead>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Quantity of Stock</th>
+        </thead>
+        <tbody>
+        <tr th:each="item : ${itemList}">
+            <td th:text="${item.name}"></td>
+            <td th:text="${item.type}"></td>
+            <td th:text="${item.description}"></td>
+            <td th:text="${item.price} +' '+ ${item.currency}"></td>
+            <td id="quantity" th:text="${item.quantityOfStock}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
