@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Gfa links</title>
+</head>
+<body>
+    <h2 th:text="'Student counter:'+ ${counter}"></h2>
+    <ul>
+        <li><a href="/gfa/list">List all students</a></li>
+        <li><a href="/gfa/check">Name checker</a></li>
+    </ul>
+
+    <ul th:each="student: ${students}">
+        <li th:text="${student}"></li>
+    </ul>
+
+    <form action="/gfa/add">
+        <label for="name">Student name</label>
+        <input id="name" name="name" type="text">
+        <button type="submit">Add</button>
+    </form>
+</body>
+</html>

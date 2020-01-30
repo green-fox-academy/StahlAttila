@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Gfa name checker</title>
+</head>
+<body>
+
+<form action="/gfa/check">
+    <label for="name">Student name</label>
+    <input id="name" name="name" type="text">
+    <button type="submit">Add</button>
+</form>
+
+<span th:text="${nameIsInTheList}"></span>
+</body>
+</html>
