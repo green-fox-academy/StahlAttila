@@ -5,15 +5,11 @@
     <title>Nutrition store</title>
 </head>
 <body>
-<ul>
-    <li><a th:href="'/?name='+${fox.name}">Information</a></li>
-    <li><a href="/trickCenter">Trick school</a></li>
-    <li><a th:href="'/nutritionStore?name='+${fox.name}">Nutrition store</a></li>
-</ul>
+    <div th:replace="fragments/fragments.html :: topNavLinks"></div>
     <div>
         <form th:method="post" th:action="@{/nutritionStore(name=${fox.name})}">
             <label for="food">Food</label>
-            <select name="food" id="food" th:selected="${fox.food}">
+            <select name="food" id="food" >
                 <option value="pizza">pizza</option>
                 <option value="cake">cake</option>
                 <option value="hotdog">hotdog</option>
@@ -21,7 +17,7 @@
                 <option value="crack">crack</option>
             </select>
             <label for="drink">Drink</label>
-            <select name="drink" id="drink" th:selected="${fox.drink}">
+            <select name="drink" id="drink" >
                 <option value="coke">coke</option>
                 <option value="urine">urine</option>
                 <option value="vodka">vodka</option>

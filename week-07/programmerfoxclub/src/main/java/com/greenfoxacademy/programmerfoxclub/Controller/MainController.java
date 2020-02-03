@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.jws.WebParam;
-
 @Controller
 public class MainController {
 
@@ -29,6 +27,7 @@ public class MainController {
             return "redirect:/login";
         }
         model.addAttribute("fox", foxService.findFox(name));
+        model.addAttribute("latestActions", foxService.get5latestAction(foxService.findFox(name)));
         return "index";
     }
 

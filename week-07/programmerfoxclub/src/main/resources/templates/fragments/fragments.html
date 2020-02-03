@@ -1,0 +1,8 @@
+<div th:fragment ="topNavLinks">
+    <ul>
+        <li><a th:href="'/?name='+${fox.name}">Information</a></li>
+        <li><a th:href="'/trickCenter?name='+${fox.name}">Trick school</a></li>
+        <li><a th:href="'/nutritionStore?name='+${fox.name}">Nutrition store</a></li>
+        <li><a th:href="'/actionHistory?name='+${fox.name}">Action history</a></li>
+    </ul>
+</div>

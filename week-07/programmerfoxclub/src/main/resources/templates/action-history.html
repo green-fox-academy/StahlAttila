@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Action history</title>
+</head>
+<body>
+    <div th:replace="fragments/fragments.html :: topNavLinks"></div>
+    <h3>Action history</h3>
+    <div>
+        <p th:if="${fox.actionHistory.size() == 0}" th:text="'Nothing has happened to '+${fox.name} + ' yet.'"> </p>
+        <ul th:unless="${fox.actionHistory.size() == 0}" th:each="action:${fox.actionHistory}">
+            <li th:text="${action}"></li>
+        </ul>
+    </div>
+</body>
+</html>
