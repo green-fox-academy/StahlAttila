@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1 th:text="'Edit '+ ${assignee.name}"></h1>
-<form th:method="post" th:action="@{/todo/assignees/edit}">
+<form th:method="post" th:action="@{/todo/assignees/edit(id=${assignee.id})}">
     <label for="name">Name</label>
     <input type="text" id="name" name="name" th:value="${assignee.name}">
     <label for="email">E-mail</label>

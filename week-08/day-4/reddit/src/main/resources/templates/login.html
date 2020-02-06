@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login page</title>
+</head>
+<body>
+<img src="@{resources/static/reddit-pirate.png}" alt="pirate reddit logo">
+    <h2>Login</h2>
+    <form th:action="@{/login}" th:method="post">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password">
+        <button type="submit">Login</button>
+    </form>
+    <h3>Register</h3>
+    <form th:action="@{/register}" th:method="post">
+        <label for="username-reg">Username</label>
+        <input type="text" name="username" id="username-reg">
+        <label for="password-reg">Password</label>
+        <input type="password" id="password-reg" name="password">
+        <button type="submit">Register</button>
+    </form>
+</body>
+</html>

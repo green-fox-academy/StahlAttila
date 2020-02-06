@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title> Own posts</title>
+</head>
+<body>
+<a th:href="@{'/'+${user.username}}">Home</a>
+    <h1>Own posts</h1>
+    <table>
+        <tr th:each="post : ${posts}">
+            <td th:text="${post.likeCounter}"></td>
+            <td><a th:href="${post.URL}" th:text="${post.title}"></a></td>
+            <td th:text="${post.date}"></td>
+            <td><a href="/login">Edit</a></td>
+        </tr>
+    </table>
+</body>
+</html>

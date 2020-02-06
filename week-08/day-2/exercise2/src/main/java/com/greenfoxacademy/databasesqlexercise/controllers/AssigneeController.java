@@ -42,13 +42,11 @@ public class AssigneeController {
         return "edit-assignee";
     }
 
-    @PostMapping("edit")
-    public String editAssigneeData(@RequestParam String name, @RequestParam String email){
-        //nullpointer exep. cuz after changing the name its not gonna find the email for the changed name
-        assigneeRepository.findByName(name).setName(name);
-        assigneeRepository.findByName(name).setEmail(email);
+    /*@PostMapping("edit")
+    public String editAssigneeData(@RequestParam long id, @RequestParam String name, @RequestParam String email){
+        assigneeRepository.save(new Assignee(id, name, email));
         return "redirect:/todo/assignees";
-    }
+    }*/
 
 
 }
