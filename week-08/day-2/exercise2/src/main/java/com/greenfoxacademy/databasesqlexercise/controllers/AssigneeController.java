@@ -42,11 +42,11 @@ public class AssigneeController {
         return "edit-assignee";
     }
 
-    /*@PostMapping("edit")
+    @PostMapping("edit")
     public String editAssigneeData(@RequestParam long id, @RequestParam String name, @RequestParam String email){
         assigneeRepository.save(new Assignee(id, name, email));
         return "redirect:/todo/assignees";
-    }*/
+    }
 
 
 }

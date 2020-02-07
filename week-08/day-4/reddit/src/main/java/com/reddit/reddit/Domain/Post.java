@@ -31,6 +31,16 @@ public class Post {
 
     }
 
+    public Post(Long id, String title, String URL, User user) {
+        this.id = id;
+        this.title = title;
+        this.URL = URL;
+        this.likeCounter = 0;
+        this.date = new Date();
+        this.user = user;
+
+    }
+
     public long getId() {
         return id;
     }

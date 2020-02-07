@@ -1,10 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymleafe.org">
 <head>
     <meta charset="UTF-8">
     <title>Edit post</title>
 </head>
 <body>
-edit post goes here
+    <h1>Post to edit</h1>
+    <form th:action="@{edit-post(postId=${post.id})}" th:method="post">
+        <label for="Title">Title:</label>
+        <input type="text" name="title" id="title" th:value="${post.title}">
+        <label for="URL">URL:</label>
+        <input type="text" name="URL" id="URL" th:value="${post.URL}">
+        <button type="submit">Submit</button>
+    </form>
 </body>
 </html>
