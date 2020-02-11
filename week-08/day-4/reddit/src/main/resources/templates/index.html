@@ -2,25 +2,31 @@
 <html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>RedditClone</title>
+    <title>Home page</title>
 </head>
 <body>
-<a th:href="@{'/'+${user.username}+'/add-post'}">Submit new Post</a>
 <h1>Trending posts</h1>
-<p th:text="'Logged in as: '+${user.username}"></p>
-<a th:href="@{/login}">Log out</a>
+
+<a th:href="@{'/'+${user.username}+'/fresh'}">Fresh</a>
+<a th:href="@{'/'+${user.username}+'/trending'}">Hot</a>
+<a th:href="@{'/'+${user.username}+'/add-post'}">Submit new Post</a>
 <a th:href="@{'/'+${user.username}+'/own-posts'(page=0)}">Own posts</a>
+
+<p th:text="${user.username}"></p>
+<form th:action="@{/login}" th:method="get">
+    <button type="submit">Logout</button>
+</form>
 <table>
     <tr th:each="post : ${posts}">
         <td th:text="${post.likeCounter}"></td>
-        <td><a th:href="@{'/change/'+ ${post.id}(number=1, username=${user.username}, page=0)}">+</a></td>
-        <td><a th:href="@{'/change/'+ ${post.id}(number=-1, username=${user.username}, page=0)}">-</a></td>
+        <td><a th:href="@{'/change/'+${post.id}+'/'+${orderForSite}(number=1, username=${user.username}, page=${pageForVote})}">+</a></td>
+        <td><a th:href="@{'/change/'+${post.id}+'/'+${orderForSite}(number=-1, username=${user.username}, page=${pageForVote})}">-</a></td>
         <td><a th:href="${post.URL}" th:text="${post.title}"></a></td>
         <td th:text="${post.date}"></td>
     </tr>
 </table>
 <ul th:each="pageNum : ${pageNumber}">
-    <li><a th:href="@{'/'+${user.username}(page=${pageNum})}" th:text="${pageNum}"></a></li>
+    <li><a th:href="@{'/'+${user.username}+'/trending'(page=${pageNum})}" th:text="${pageNum}"></a></li>
 </ul>
 </body>
 </html>

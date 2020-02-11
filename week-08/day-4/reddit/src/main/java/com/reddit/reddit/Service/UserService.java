@@ -12,5 +12,5 @@ public interface UserService {
 
     User findByName(String username);
 
-    List<Integer> getPageNumber(String username);
+    List<Integer> getPageNumberByUser(String username);
 }

@@ -15,7 +15,9 @@ public interface PostService {
 
     Page<Post> getAllByUser(User user, Pageable pageable);
 
-    Page<Post> findAllPaged(User user, Pageable pageable);
+    Page<Post> findAllPaged(Pageable pageable);
+
+    Page<Post> findAllNewest(Pageable pageable);
 
     void change(Long id, Integer n);
 
@@ -26,4 +28,8 @@ public interface PostService {
     Post findById(Long id);
 
     void updatePost(Long postId, String title, String URL, User user);
+
+    List<Integer> getPageNumberForAll();
+
+    void delete(Long id);
 }

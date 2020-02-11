@@ -17,5 +17,10 @@ public interface PostRepository extends CrudRepository<Post, Long> {
     Page<Post> findAllByUser(User user, Pageable pageable);
 
     @Query(value = "select * from post order by like_counter desc ", nativeQuery = true)
-    Page<Post> findAllPaged(User user, Pageable pageable);
+    Page<Post> findAllPaged(Pageable pageable);
+
+    void deleteById(Long id);
+
+    @Query(value = "select * from post order by date desc", nativeQuery = true)
+    Page<Post> findAllOrderByDate(Pageable pageable);
 }

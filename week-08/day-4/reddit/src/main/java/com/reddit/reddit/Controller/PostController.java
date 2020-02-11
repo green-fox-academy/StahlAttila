@@ -8,14 +8,14 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 public class PostController {
 
-    PostService postService;
-    UserService userService;
+    private PostService postService;
+    private UserService userService;
+    private Integer pageNumberForVote;
+    private String orderForIndex;
 
     @Autowired
     public PostController(PostService postService, UserService userService) {
@@ -34,27 +34,46 @@ public class PostController {
         if(user == null) {
             return "redirect:/login";
         }
-        return "redirect:/"+username+"?page=0";
+        pageNumberForVote = 0;
+        orderForIndex = "trending";
+        return "redirect:/"+username+"/"+orderForIndex+"?page="+pageNumberForVote;
     }
 
-    @GetMapping("/{username}")
-    public String getPosts(Model model, @PathVariable String username, @RequestParam int page){
+    @GetMapping("/{username}/{order}")
+    public String getPosts(Model model, @PathVariable String username, @PathVariable String order,@RequestParam (defaultValue = "0") int page){
         if(userService.findByName(username) == null){
             return "redirect:/login";
         }
-        //***BUG*** on the home page the paging code only watches the logged in persons list size to creat the page numbers
-        model.addAttribute("pageNumber", userService.getPageNumber(username));
+        pageNumberForVote = page;
+        orderForIndex = order;
+        if(order.equals("fresh")){
+            model.addAttribute("orderForSite", orderForIndex);
+            model.addAttribute("pageForVote", pageNumberForVote);
+            model.addAttribute("pageNumber", postService.getPageNumberForAll());
+            model.addAttribute("user", userService.findByName(username));
+            model.addAttribute("posts", postService.findAllNewest(PageRequest.of(page, 10)));
 
+            return "index";
+        }
+
+        model.addAttribute("orderForSite", orderForIndex);
+        model.addAttribute("pageForVote", pageNumberForVote);
+        model.addAttribute("pageNumber", postService.getPageNumberForAll());
         model.addAttribute("user", userService.findByName(username));
-        model.addAttribute("posts", postService.findAllPaged(userService.findByName(username), PageRequest.of(page, 10)));
+        model.addAttribute("posts", postService.findAllPaged(PageRequest.of(page, 10)));
 
         return "index";
+
     }
 
-    @GetMapping("/change/{id}")
-    public String changeLike(@PathVariable Long id, @RequestParam Integer number, @RequestParam String username, @RequestParam int page){
-        postService.change(id, number);
-        return "redirect:/"+username+"?page="+page;
+    @GetMapping("/change/{id}/{order}")
+    public String changeLike(@PathVariable Long id, @RequestParam Integer number, @RequestParam String username, @RequestParam Integer page, @PathVariable String order){
+        if(order.equals("fresh") || order.equals("trending")){
+            postService.change(id, number);
+            return "redirect:/"+username+"/"+orderForIndex+"?page="+page;
+        }
+
+        return "redirect:/"+username+"/"+orderForIndex+"?page="+page;
     }
 
     @GetMapping("/{username}/add-post")
@@ -66,7 +85,7 @@ public class PostController {
     @PostMapping("/{username}/add-post")
     public String addPost(@PathVariable String username, @RequestParam String title, @RequestParam String URL){
         postService.addPost(title, URL, userService.findByName(username));
-        return "redirect:/"+username+"?page=0";
+        return "redirect:/"+username+"/"+orderForIndex+"?page=0";
     }
 
     @PostMapping("/register")
@@ -82,11 +101,7 @@ public class PostController {
 
     @GetMapping("/{username}/own-posts")
     public String showOwnPosts(@PathVariable String username, Model model, @RequestParam int page){
-        List<Integer> numberOfLinks = new ArrayList<>();
-        for (int i = 0; i < (userService.findByName(username).getPosts().size()/5)+1 ; i++) {
-            numberOfLinks.add(i);
-        }
-        model.addAttribute("pageNumber", numberOfLinks);
+        model.addAttribute("pageNumber", userService.getPageNumberByUser(username));
         model.addAttribute("user", userService.findByName(username));
         model.addAttribute("posts", postService.getAllByUser(userService.findByName(username), PageRequest.of(page, 5 )));
         return "own-posts";
@@ -102,6 +117,12 @@ public class PostController {
     @PostMapping("/{username}/edit-post")
     public String editPostSend(@PathVariable String username, @RequestParam String title, @RequestParam String URL, @RequestParam Long postId){
         postService.updatePost(postId, title, URL, userService.findByName(username));
+        return "redirect:/"+username+"/own-posts?page=0";
+    }
+
+    @GetMapping("/{username}/delete")
+    public String delete(@RequestParam Long postId, @PathVariable String username){
+        postService.delete(postId);
         return "redirect:/"+username+"/own-posts?page=0";
     }
 }

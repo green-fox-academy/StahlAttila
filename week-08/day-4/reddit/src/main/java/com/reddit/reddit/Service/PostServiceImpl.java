@@ -8,6 +8,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,8 +39,13 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public Page<Post> findAllPaged(User user, Pageable pageable) {
-        return postRepository.findAllPaged(user, pageable);
+    public Page<Post> findAllPaged(Pageable pageable) {
+        return postRepository.findAllPaged(pageable);
+    }
+
+    @Override
+    public Page<Post> findAllNewest(Pageable pageable) {
+        return postRepository.findAllOrderByDate(pageable);
     }
 
     @Override
@@ -72,5 +79,26 @@ public class PostServiceImpl implements PostService {
     public void updatePost(Long postId, String title, String URL, User user) {
         postRepository.save(new Post(postId, title, URL, user));
     }
+
+    @Override
+    public List<Integer> getPageNumberForAll() {
+        List<Integer> numberOfLinks = new ArrayList<>();
+        if(getAll().size()%10 == 0){
+            for (int i = 0; i < (getAll().size()/10);  i++) {
+                numberOfLinks.add(i);
+            }
+            return numberOfLinks;
+        }
+        for (int i = 0; i < (getAll().size()/10+1);  i++) {
+            numberOfLinks.add(i);
+        }
+        return numberOfLinks;
+    }
+
+    @Override
+    public void delete(Long id) {
+        postRepository.deleteById(id);
+    }
+
 
 }

@@ -34,9 +34,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<Integer> getPageNumber(String username) {
+    public List<Integer> getPageNumberByUser(String username) {
         List<Integer> numberOfLinks = new ArrayList<>();
-        for (int i = 0; i < (userRepository.findByUsername(username).getPosts().size()/10)+1;  i++) {
+        if(userRepository.findByUsername(username).getPosts().size()%5 ==0){
+            for (int i = 0; i < (userRepository.findByUsername(username).getPosts().size()/5);  i++) {
+                numberOfLinks.add(i);
+            }
+            return numberOfLinks;
+        }
+        for (int i = 0; i < (userRepository.findByUsername(username).getPosts().size()/5+1);  i++) {
             numberOfLinks.add(i);
         }
         return numberOfLinks;
