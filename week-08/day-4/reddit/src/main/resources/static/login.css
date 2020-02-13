@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 
-*{
+* {
     box-sizing: border-box;
 }
 
-body{
+body {
     font-family: 'Montserrat', sans-serif;
-    background: #f6f5f7;
+    background-color: rgb(255, 228, 214);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -15,7 +15,7 @@ body{
     margin: -20px 0 50px;
 }
 
-h2{
+h2 {
     display: flex;
     justify-content: center;
     align-content: center;
@@ -26,7 +26,7 @@ h2{
 .container {
     background: #fff;
     border-radius: 10px;
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0, 0.22);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
     position: relative;
     overflow: hidden;
     width: 768px;
@@ -48,7 +48,6 @@ h2{
 .form-container input {
     font-size: 20px;
     font-weight: bolder;
-    color: #ff6762;
     text-align: center;
     background: #eee;
     border: none;
@@ -57,17 +56,33 @@ h2{
     width: 70%;
 }
 
+
+.login-container input {
+    color: #ff6762;
+}
+
+.login-container input:focus {
+    outline-color: #ff6762;
+}
+
+.register-container input {
+    color: #0088a9;
+}
+
+.register-container input:focus {
+    outline-color: #0088a9;
+}
+
 button {
     border-radius: 20px;
     border: 1px solid #ff4b2b;
-    background: #ff4b2b;
     color: #fff;
-    font-size: 12px;
-    font-weight: bold;
+    font-size: 14px;
+    font-weight: bolder;
     padding: 12px 45px;
     letter-spacing: 1px;
     text-transform: uppercase;
-    transition: transform 80ms ease-in;
+    transition: all 80ms ease-in;
     margin-bottom: 20px;
 }
 
@@ -77,4 +92,24 @@ button:active {
 
 button:focus {
     outline: none;
+}
+
+.login-container button {
+    border: 1px solid #ff4b2b;
+    background-color: #ff4b2b;
+}
+
+.login-container button:hover {
+    border: 1px solid #0088a9;
+    background-color: #0088a9;
+}
+
+.register-container button {
+    border: 1px solid #0088a9;
+    background-color: #0088a9;
+}
+
+.register-container button:hover {
+    border: 1px solid #ff4b2b;
+    background-color: #ff4b2b;
 }

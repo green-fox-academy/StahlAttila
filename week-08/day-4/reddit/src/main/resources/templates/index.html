@@ -6,28 +6,36 @@
     <title>Home page</title>
 </head>
 <body>
-<h1>Trending posts</h1>
+<header>
+    <h1 class="top-left-text" th:text="${orderForSite}+' posts'"></h1>
+    <nav>
+        <ul class="nav-links">
+            <li><a th:href="@{'/'+${user.username}+'/fresh'}">Fresh</a></li>
+            <li><a th:href="@{'/'+${user.username}+'/trending'}">Hot</a></li>
+            <li><a th:href="@{'/'+${user.username}+'/add-post'}">Submit new Post</a></li>
+            <li><a th:href="@{'/'+${user.username}+'/own-posts'(page=0)}">Own posts</a></li>
+        </ul>
+    </nav>
+    <div class="user-interface">
+        <p th:text="${user.username}"></p>
+        <a class="logout-button" href="/login"><button type="submit">Logout</button></a>
+    </div>
+</header>
 
-<a th:href="@{'/'+${user.username}+'/fresh'}">Fresh</a>
-<a th:href="@{'/'+${user.username}+'/trending'}">Hot</a>
-<a th:href="@{'/'+${user.username}+'/add-post'}">Submit new Post</a>
-<a th:href="@{'/'+${user.username}+'/own-posts'(page=0)}">Own posts</a>
-
-<p th:text="${user.username}"></p>
-<form th:action="@{/login}" th:method="get">
-    <button type="submit">Logout</button>
-</form>
 <table>
     <tr th:each="post : ${posts}">
-        <td th:text="${post.likeCounter}"></td>
-        <td><a th:href="@{'/change/'+${post.id}+'/'+${orderForSite}(number=1, username=${user.username}, page=${pageForVote})}">+</a></td>
-        <td><a th:href="@{'/change/'+${post.id}+'/'+${orderForSite}(number=-1, username=${user.username}, page=${pageForVote})}">-</a></td>
-        <td><a th:href="${post.URL}" th:text="${post.title}"></a></td>
+        <td class="like" th:text="${post.likeCounter}"></td>
+        <td class="vote-up"><a th:href="@{'/change/'+${post.id}+'/'+${orderForSite}(number=1, username=${user.username}, page=${pageForVote})}">+</a></td>
+        <td class="vote-down"><a th:href="@{'/change/'+${post.id}+'/'+${orderForSite}(number=-1, username=${user.username}, page=${pageForVote})}">-</a></td>
+        <td class="table-title"><a th:href="${post.URL}" th:text="${post.title}"></a></td>
         <td th:text="${post.date}"></td>
     </tr>
 </table>
-<ul th:each="pageNum : ${pageNumber}">
-    <li><a th:href="@{'/'+${user.username}+'/trending'(page=${pageNum})}" th:text="${pageNum}"></a></li>
-</ul>
+<nav class="page-numbers">
+    <ul th:each="pageNum : ${pageNumber}">
+        <li><a th:href="@{'/'+${user.username}+'/'+${orderForSite}(page=${pageNum})}">
+            <button th:text="${pageNum}"></button></a></li>
+    </ul>
+</nav>
 </body>
 </html>

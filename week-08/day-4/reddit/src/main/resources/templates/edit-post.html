@@ -2,12 +2,26 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link th:href="@{/bootstrap.css}" rel="stylesheet" media="screen">
     <link th:href="@{/mystyle.css}" rel="stylesheet">
     <title>Edit post</title>
 </head>
 <body>
-    <h1>Post to edit</h1>
+<header>
+    <h1 class="top-left-text">Edit post</h1>
+    <nav>
+        <ul class="nav-links">
+            <li><a th:href="@{'/'+${user.username}+'/fresh'}">Fresh</a></li>
+            <li><a th:href="@{'/'+${user.username}+'/trending'}">Hot</a></li>
+            <li><a th:href="@{'/'+${user.username}+'/add-post'}">Submit new Post</a></li>
+            <li><a th:href="@{'/'+${user.username}+'/own-posts'(page=0)}">Own posts</a></li>
+        </ul>
+    </nav>
+    <div class="user-interface">
+        <p th:text="${user.username}"></p>
+        <a class="logout-button" href="/login"><button type="submit">Logout</button></a>
+    </div>
+</header>
+<div class="container">
     <form th:action="@{edit-post(postId=${post.id})}" th:method="post">
         <label for="Title">Title:</label>
         <input type="text" name="title" id="title" th:value="${post.title}">
@@ -15,5 +29,7 @@
         <input type="text" name="URL" id="URL" th:value="${post.URL}">
         <button type="submit">Submit</button>
     </form>
+</div>
+
 </body>
 </html>

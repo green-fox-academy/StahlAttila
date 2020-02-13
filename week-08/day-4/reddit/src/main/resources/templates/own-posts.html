@@ -1,25 +1,40 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link th:href="@{/bootstrap.css}" rel="stylesheet" media="screen">
     <link th:href="@{/mystyle.css}" rel="stylesheet">
     <title> Own posts</title>
 </head>
 <body>
-<a th:href="@{'/'+${user.username}+'/trending'}">Home</a>
-    <h1>Own posts</h1>
+<header>
+    <h1 class="top-left-text">Own posts</h1>
+    <nav>
+        <ul class="nav-links">
+            <li><a th:href="@{'/'+${user.username}+'/fresh'}">Fresh</a></li>
+            <li><a th:href="@{'/'+${user.username}+'/trending'}">Hot</a></li>
+            <li><a th:href="@{'/'+${user.username}+'/add-post'}">Submit new Post</a></li>
+            <li><a th:href="@{'/'+${user.username}+'/trending'}">Home</a></li>
+        </ul>
+    </nav>
+    <div class="user-interface">
+        <p th:text="${user.username}"></p>
+        <a class="logout-button" href="/login"><button type="submit">Logout</button></a>
+    </div>
+</header>
     <table>
         <tr th:each="post : ${posts}" th:object="${user}">
-            <td th:text="${post.likeCounter}"></td>
-            <td><a th:href="${post.URL}" th:text="${post.title}"></a></td>
+            <td class="like" th:text="${post.likeCounter}"></td>
+            <td class="table-title"><a th:href="${post.URL}" th:text="${post.title}"></a></td>
             <td th:text="${post.date}"></td>
             <td><a th:href="@{edit-post(postId=${post.id})}">Edit</a></td>
             <td><a th:href="@{delete(postId=${post.id})}">Delete</a></td>
         </tr>
     </table>
+<nav class="page-numbers">
     <ul th:each="pageNum : ${pageNumber}">
-        <li><a th:href="@{'/'+${user.username}+'/own-posts'(page=${pageNum})}" th:text="${pageNum}"></a></li>
+        <li><a th:href="@{'/'+${user.username}+'/own-posts'(page=${pageNum})}">
+            <button th:text="${pageNum}"></button></a></li>
     </ul>
+</nav>
 </body>
 </html>
