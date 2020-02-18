@@ -1,10 +1,9 @@
-package com.restexercise.restexercise.domain;
+package com.restexercise.restexercise.Domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
-import java.util.Arrays;
-
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ArrayHandler {
 
     @JsonIgnore
@@ -12,21 +11,29 @@ public class ArrayHandler {
     @JsonIgnore
     private Integer [] numbers;
     private Integer result;
-    @JsonProperty("result")
-    private Integer[] resultArray;
+    private String error;
 
     public ArrayHandler(String what, Integer[] numbers) {
-        switch (what) {
-            case "sum":
-                this.result = sum(numbers);
-                break;
-            case "multiply":
-                this.result = multiply(numbers);
-                break;
-            case "double":
-                this.resultArray = doubleTheNumbers(numbers);
-                break;
+
+        if(what == null || numbers == null) {
+            this.error = "Please provide what to do with the numbers!";
+        }else if(what.equals("sum")){
+            this.result = sum(numbers);
+        }else if(what.equals("multiply")){
+            this.result = multiply(numbers);
         }
+    }
+
+    public String getError() {
+        return error;
+    }
+
+    public void setError(String error) {
+        this.error = error;
+    }
+
+    public void setResult(Integer result) {
+        this.result = result;
     }
 
     public String getWhat() {
@@ -45,10 +52,14 @@ public class ArrayHandler {
         this.numbers = numbers;
     }
 
-    public Integer sum(Integer [] numbers) {
+    public Integer getResult() {
+        return result;
+    }
+
+    private Integer sum(Integer [] numbers) {
         int result = 0;
-        for (int i = 0; i < numbers.length-1; i++) {
-            result += numbers[i];
+        for (Integer number : numbers) {
+            result += number;
         }
 
         return result;
@@ -56,18 +67,11 @@ public class ArrayHandler {
 
     private Integer multiply(Integer[] numbers) {
         int result = 1;
-        for (int i = 0; i < numbers.length-1; i++) {
-            result *= numbers[i];
+        for (Integer number : numbers) {
+            result *= number;
         }
 
         return result;
     }
 
-    private Integer[] doubleTheNumbers(Integer[] numbers) {
-        for (Integer number : numbers) {
-            number = number*2;
-        }
-
-        return numbers;
-    }
 }

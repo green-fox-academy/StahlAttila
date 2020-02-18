@@ -1,4 +1,4 @@
-package com.restexercise.restexercise.domain;
+package com.restexercise.restexercise.Domain;
 
 public class AppendA {
 
