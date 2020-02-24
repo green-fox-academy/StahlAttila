@@ -11,7 +11,6 @@ public class Cargo {
     private String shipstatus;
     private Boolean ready;
     private Integer maximumAmount;
-    private Cargo cargo;
 
     public Cargo() {
         this.caliber25 = 0;
@@ -49,10 +48,6 @@ public class Cargo {
         return shipstatus;
     }
 
-    public void setShipstatus(String shipstatus) {
-        this.shipstatus = shipstatus;
-    }
-
     public Boolean getReady() {
         return ready;
     }
@@ -70,7 +65,14 @@ public class Cargo {
     }
 
     public void fillCargo(String caliber, Integer amount) {
-        int currentAmount = this.caliber25 + this.caliber30 + this.caliber50;
+
+        setAmmoFields(caliber, amount);
+        setShipStatus();
+        this.ready = this.shipstatus.equals("full");
+
+    }
+
+    private void setAmmoFields(String caliber, Integer amount) {
         if(caliber.contains("25")) {
             this.caliber25 += amount;
         } else if(caliber.contains("30")) {
@@ -78,17 +80,20 @@ public class Cargo {
         } else if(caliber.contains("50")) {
             this.caliber50 += amount;
         }
-        if(currentAmount + amount > 0 && currentAmount + amount <= 12500) {
+    }
+
+    private void setShipStatus() {
+
+        int currentAmount = this.caliber25 + this.caliber30 + this.caliber50;
+
+        if(currentAmount == 12500) {
+            this.shipstatus = "full";
+        } else if(currentAmount > 0 && currentAmount <= 12500) {
             this.shipstatus = 100 * (this.caliber25 + this.caliber30 + this.caliber50) / 12500 +"%";
-        } else if( currentAmount + amount == 0) {
+        } else if( currentAmount == 0) {
             this.shipstatus = "empty";
         } else {
             this.shipstatus = "overloaded";
         }
-
-        if(this.shipstatus.equals("100%")) {
-            this.ready = true;
-        }
-
     }
 }

@@ -1,18 +1,14 @@
 package com.groot.groot.Controllers;
 
-import com.groot.groot.Domain.Cargo;
-import com.groot.groot.Domain.CargoRespond;
-import com.groot.groot.Domain.Groot;
-import com.groot.groot.Domain.Yondu;
+import com.groot.groot.Domain.*;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class GuardianController {
 
     Cargo cargo = new Cargo();
+    DraxCalorieTable draxCalorieTable = new DraxCalorieTable();
 
     @GetMapping("/groot")
     public ResponseEntity<Groot> getMessage(@RequestParam (required = false) String message) {
@@ -44,10 +40,50 @@ public class GuardianController {
     }
 
     @GetMapping("/rocket/fill")
-    public ResponseEntity<Cargo> fillCargo(@RequestParam String caliber, @RequestParam Integer amount) {
-        cargo.fillCargo(caliber, amount);
-        CargoRespond cargoRespond = new CargoRespond(caliber, amount, cargo);
+    public ResponseEntity<Object> fillCargo(@RequestParam (required = false) String caliber, @RequestParam (required = false) Integer amount) {
+
+
+        if(caliber == null || amount == null) {
+            return ResponseEntity.badRequest()
+                    .body(new CargoRespond(null, null, cargo));
+        }else {
+            cargo.fillCargo(caliber, amount);
+            CargoRespond cargoRespond = new CargoRespond(caliber, amount, cargo);
+            return ResponseEntity.ok()
+                    .body(cargoRespond);
+        }
+
+    }
+
+    @GetMapping("/drax")
+    public ResponseEntity<Object> getDraxCalorieTable() {
         return ResponseEntity.ok()
-                .body(cargoRespond);
+                .body(draxCalorieTable);
+    }
+
+    @PostMapping("/drax/add-food")
+    public ResponseEntity<Food> addFood(@RequestParam String name, @RequestParam Double amount, @RequestParam Double calorie) {
+        Food food = new Food(name, amount, calorie);
+        draxCalorieTable.addFood(food);
+
+        return ResponseEntity.ok()
+                .body(food);
+    }
+
+    @DeleteMapping("/drax/remove-food")
+    public ResponseEntity<Food> removeFood(@RequestParam Integer index) {
+        Food food = draxCalorieTable.getFoodList().get(index);
+        draxCalorieTable.removeFood(index);
+
+        return ResponseEntity.ok()
+                .body(food);
+    }
+
+    @PutMapping("/drax/edit-amount")
+    public ResponseEntity<Food> editAmount(@RequestParam Integer index, @RequestParam Double amount) {
+        draxCalorieTable.getFoodList().get(index).setAmount(amount);
+
+        return ResponseEntity.ok()
+                .body(draxCalorieTable.getFoodList().get(index));
     }
 }

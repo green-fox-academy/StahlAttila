@@ -5,3 +5,4 @@
 - [Patchwork repo](https://github.com/StahlAttila/patchwork)
 - [GF anyagok repo](https://github.com/StahlAttila/greenfox-anyagok)
 - [Syllabus repo](https://github.com/green-fox-academy/reboot-syllabus)
+- [P2P chat repo](https://github.com/StahlAttila/p2p-chat)

@@ -1,23 +1,34 @@
 package com.groot.groot.Domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
-public class CargoRespond extends Cargo {
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class CargoRespond {
 
-    private Integer caliber25;
-    private Integer caliber30;
-    private Integer caliber50;
     private String received;
     private Integer amount;
     private String shipstatus;
     private Boolean ready;
+    private String error;
 
     public CargoRespond(String received, Integer amount, Cargo cargo) {
-        super();
-        this.received = received;
-        this.amount = amount;
-        this.shipstatus = cargo.getShipstatus();
-        this.ready = cargo.getReady();
+        if(received == null || amount == null) {
+            this.error = "There were no parameters given!";
+        }else {
+            this.received = received;
+            this.amount = amount;
+            this.shipstatus = cargo.getShipstatus();
+            this.ready = cargo.getReady();
+        }
+
+    }
+
+    public String getError() {
+        return error;
+    }
+
+    public void setError(String error) {
+        this.error = error;
     }
 
     public String getReceived() {
@@ -36,57 +47,20 @@ public class CargoRespond extends Cargo {
         this.amount = amount;
     }
 
-    @Override
     public String getShipstatus() {
         return shipstatus;
     }
 
-    @Override
     public void setShipstatus(String shipstatus) {
         this.shipstatus = shipstatus;
     }
 
-    @Override
     public Boolean getReady() {
         return ready;
     }
 
-    @Override
     public void setReady(Boolean ready) {
         this.ready = ready;
     }
 
-    @JsonIgnore
-    @Override
-    public Integer getCaliber25() {
-        return caliber25;
-    }
-
-
-    @Override
-    public void setCaliber25(Integer caliber25) {
-        this.caliber25 = caliber25;
-    }
-
-    @JsonIgnore
-    @Override
-    public Integer getCaliber30() {
-        return caliber30;
-    }
-
-    @Override
-    public void setCaliber30(Integer caliber30) {
-        this.caliber30 = caliber30;
-    }
-
-    @JsonIgnore
-    @Override
-    public Integer getCaliber50() {
-        return caliber50;
-    }
-
-    @Override
-    public void setCaliber50(Integer caliber50) {
-        this.caliber50 = caliber50;
-    }
 }
