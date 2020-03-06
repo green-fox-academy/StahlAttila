@@ -13,7 +13,7 @@ import java.util.function.Function;
 @Service
 public class JwtUtil {
 
-    private String SECRET_KEY = "asdyolo";
+    private String SECRET_KEY = System.getenv("SECRET_CODE");
 
     public String generateToken(UserDetails userDetails) {
         Map<String, Object> claims = new HashMap<>();

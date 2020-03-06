@@ -5,34 +5,24 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.greenfoxacademy.projectmovieapp.domains.*;
 import com.greenfoxacademy.projectmovieapp.services.*;
 import com.greenfoxacademy.projectmovieapp.util.JwtUtil;
-import okhttp3.HttpUrl;
-import okhttp3.OkHttpClient;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
-import java.net.URI;
 import java.util.List;
 
 
 @org.springframework.web.bind.annotation.RestController
 public class RestController {
 
-    private final String apikey = "5b39c4360c305b2a28c128e7c85b780c";
+    private final String apikey = System.getenv("API_KEY");
 
     MovieDTOService service;
     AuthenticationManager authenticationManager;
@@ -58,15 +48,13 @@ public class RestController {
         MovieDBApiService movieDBApiService = retrofit.create(MovieDBApiService.class);
         final Call<String> call = movieDBApiService.getGenres(apikey);
 
-
-        HttpUrl url = call.request().url();
         ObjectMapper mapper = new ObjectMapper();
         mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         try{
             Response<String> response = call.execute();
             String genres = response.body();
             GenresVO genreList = mapper.readValue(genres, GenresVO.class);
-            return ResponseEntity.ok(genres);
+            return ResponseEntity.ok(genreList);
         } catch (IOException ignored) {
             return ResponseEntity.badRequest().body(null);
         }
@@ -74,15 +62,7 @@ public class RestController {
 
 
     @GetMapping("/movie/{id}")
-    public ResponseEntity<Movie> getMovie(@PathVariable Long id) throws IOException {
-        /*OkHttpClient.Builder client = new OkHttpClient.Builder();
-
-
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://api.themoviedb.org/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .client(client.build())
-                .build();*/
+    public ResponseEntity<Movie> getMovie(@PathVariable Long id)  {
 
         Retrofit retrofit = retrofitService.buildRetrofit("https://api.themoviedb.org/", "gson");
         MovieDBApiService movieDBApiService = retrofit.create(MovieDBApiService.class);
@@ -101,7 +81,7 @@ public class RestController {
     }
 
     @GetMapping("/list")
-    public ResponseEntity<List<MovieDTO>> getTheSavedMovieDatas(Model model) {
+    public ResponseEntity<List<MovieDTO>> getTheSavedMovieDatas() {
        List<MovieDTO> movieList = service.movieList();
 
         return ResponseEntity.ok().body(movieList);
