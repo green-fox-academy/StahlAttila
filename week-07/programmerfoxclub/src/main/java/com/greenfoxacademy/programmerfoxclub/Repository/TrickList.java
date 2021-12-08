@@ -17,12 +17,10 @@ public class TrickList {
         /*this.trickList = new ArrayList<>();
         trickList.add(new Trick("write HTML"));
         trickList.add(new Trick("write CSS"));
-        trickList.add(new Trick("suck a dick"));
         trickList.add(new Trick("do a kickflip"));*/
         this.trickListAsStrig = new ArrayList<>();
         trickListAsStrig.add("write HTML");
         trickListAsStrig.add("write CSS");
-        trickListAsStrig.add("suck a dick");
         trickListAsStrig.add("do a kickflip");
     }
 
